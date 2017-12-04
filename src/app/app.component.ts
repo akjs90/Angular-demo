@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+	navigateIndex:number;
+	constructor(){
+		this.navigateIndex=0;
+	}
+	navigate(index:number){
+		this.navigateIndex=index;
+	}
 }

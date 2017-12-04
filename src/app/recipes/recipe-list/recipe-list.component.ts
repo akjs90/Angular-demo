@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
 
 import { Recipe } from '../recipe.model';
 
@@ -10,13 +10,18 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit {
 	recipes:Recipe[]=[
-		new Recipe('This is a test recipe','Test description','https://get.pxhere.com/photo/dish-food-salad-vegetable-recipe-meat-beef-steak-kale-garnish-dining-refreshments-tenderloin-venison-piement-beef-tenderloin-horseradish-rib-eye-steak-roast-beef-sirloin-steak-meat-chop-flat-iron-steak-tafelspitz-1376527.jpg'),
-		new Recipe('This is a test recipe','Test description','https://get.pxhere.com/photo/dish-food-salad-vegetable-recipe-meat-beef-steak-kale-garnish-dining-refreshments-tenderloin-venison-piement-beef-tenderloin-horseradish-rib-eye-steak-roast-beef-sirloin-steak-meat-chop-flat-iron-steak-tafelspitz-1376527.jpg')
+		new Recipe('This is a test recipe','Test description','http://www.seriouseats.com/recipes/assets_c/2016/03/20160309-peanut-sweet-potato-kale-coconut-soup-stew-19-thumb-1500xauto-430284.jpg'),
+		new Recipe('Another Recipe','Test description','http://www.seriouseats.com/recipes/assets_c/2016/03/20160309-peanut-sweet-potato-kale-coconut-soup-stew-19-thumb-1500xauto-430284.jpg')
 		
 	];
+
+  @Output() selectedRecipeWas=new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSelectedRecipe(recipe:Recipe){
+    this.selectedRecipeWas.emit(recipe);
+  }
 }
